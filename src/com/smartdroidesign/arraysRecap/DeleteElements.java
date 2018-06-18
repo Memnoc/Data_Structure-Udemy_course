@@ -1,26 +1,53 @@
 package com.smartdroidesign.arraysRecap;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class DeleteElements {
 
-    // Try to make it without using an index
-
-
     public static void main(String[] args) {
-        int size = 6;
-        int[] myArray = {50, 25, 66, 54, 31, 100, 29, 84};
-        int[] newArray = new int[size];
-        int pos = 5;
 
-        for (int i = pos; i <size ; i++) {
-            myArray[i] = myArray[i+1];
+        int size;
+        int i;
+        int del;
+        int count = 0;
+        int arr[] = new int[50];
+        Scanner scan = new Scanner(System.in);
+
+        System.out.print("Enter Array Size : ");
+        size = scan.nextInt();
+
+        System.out.print("Enter Array Elements : ");
+        for(i=0; i<size; i++)
+        {
+            arr[i] = scan.nextInt();
         }
 
-        for (int i = 0; i <size ; i++) {
-            newArray[i] = myArray[i];
-            System.out.println(newArray[i]);
+        System.out.print("Enter Element to be Delete : ");
+        del = scan.nextInt();
+        for(i=0; i<size; i++)
+        {
+            if(arr[i] == del)
+            {
+                for(int j=i; j<(size-1); j++)
+                {
+                    arr[j] = arr[j+1];
+                }
+                count++;
+                break;
+            }
+        }
+        if(count==0)
+        {
+            System.out.print("Element Not Found..!!");
+        }
+        else
+        {
+            System.out.print("Element Deleted Successfully..!!");
+            System.out.print("\nNow the New Array is :\n");
+            for(i=0; i<(size-1); i++)
+            {
+                System.out.print(arr[i]+ " ");
+            }
         }
     }
 }
